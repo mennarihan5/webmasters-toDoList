@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="./output.css" rel="stylesheet">
+</head>
+<body>
+    <main class="font-montserrat bg-orange-100 p-4 md:p-10 lg:p-20 h-[100vh] flex justify-center items-center">
+        <section class="w-10/12 lg:w-6/12 h-auto bg-white rounded-lg shadow-md p-10">
+            <h1 class="text-center text-xl md:text-4xl font-semibold mb-6">TO DO LIST</h1>
+            <form id="form" class="flex gap-3 flex-wrap md:flex-nowrap text-center justify-between w-full md:w-10/12 m-auto">
+                <input class="w-full text-center text-xl outline-black border-2 border-gray-400 rounded p-2" id="add-task-input" type="text" placeholder="Type your task here..."/>
+                <input class="m-auto md:m-0 text-center bg-orange-50 rounded-lg p-3 cursor-pointer" id="add-task-submit" type="submit" value="Add a Task">
+            </form>  
+            <div class="error-msg-wrapper relative w-full">
+                <i class="hidden fa-solid fa-xmark absolute right-10 md:right-20 top-3 text-base md:text-xl cursor-pointer"></i>
+                <p id="error-msg" class="hidden text-red-500 text-sm md:text-2xl font-semibold text-center w-4/5 mt-6 m-auto bg-white shadow-md rounded p-10">
+                    Please enter a task!
+                </p>
+            </div>
+            <div class="hidden success-msg relative w-full transition-all">
+                <span class="close-icon">
+                    <i class="fa-solid fa-xmark absolute right-10 md:right-20 top-3 text-base md:text-xl cursor-pointer"></i>
+                </span>
+                <p class="text-black text-sm md:text-2xl font-semibold text-center w-4/5 mt-6 m-auto bg-white shadow-md rounded p-10">Task added successfully</p>
+                <i class="fa-regular fa-circle-check text-green-500 text-lg md:text-2xl absolute left-1/2 top-1"></i>
+            </div>
+            <div class="hidden task-edited relative w-full">
+                <span class="close-icon">
+                    <i class="fa-solid fa-xmark absolute right-10 md:right-20 top-3 text-base md:text-xl cursor-pointer"></i>
+                </span>
+                <p class="text-black text-sm md:text-2xl font-semibold text-center w-4/5 mt-6 m-auto bg-white shadow-md rounded p-10">Task edited successfully</p>
+                <i class="fa-regular fa-circle-check text-green-500 text-lg md:text-2xl absolute left-1/2 top-1"></i>
+            </div>
+            <div class="hidden task-deleted relative w-full">
+                <span class="close-icon">
+                    <i class="fa-solid fa-xmark absolute right-10 md:right-20 top-3 text-base md:text-xl cursor-pointer"></i>
+                </span>
+                <p class="text-black text-sm md:text-2xl font-semibold text-center w-4/5 mt-6 m-auto bg-white shadow-md rounded p-10">Task deleted successfully</p>
+                <i class="fa-regular fa-circle-check text-green-500 text-lg md:text-2xl absolute left-1/2 top-1"></i>
+            </div>
+                <div class="w-full mt-10" id="tasks-container">
+                    <!-- <div class="task-row w-full text-sm md:text-lg flex justify-between gap-3">
+                        <div class="task-input-content flex gap-5 w-full relative">
+                            <span class="hidden check-icon-span text-3xl absolute -top-1 left-0 text-green-600 font-bold"><i class="fa-solid fa-check"></i></span>
+                            <span class="check-box text-sm md:text-2xl cursor-pointer"><i class="fa-regular fa-square"></i></span>
+                            <input class="task-input w-6/12 outline-none" type="text" readonly>
+                        </div>
+                        <div class="task-actions w-3/12 flex justify-between">
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </div>
+                    </div> -->
+                </div>
+        </section>
+    </main>
+    <script src="./main.js"></script>
+</body>
+</html>
