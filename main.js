@@ -99,16 +99,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 task.removeAttribute('readonly');
                 task.focus();
                 editButton.innerText = 'Save';
-            } else {
+            } else if (editButton.innerText === 'Save') {
+                saveToLocalStorage();
+                taskEdited.classList.toggle('hidden');
+                editButton.innerText = 'Edit';   
+            } 
+            else {
                 task.setAttribute('readonly', 'readonly');
                 editButton.innerText = 'Edit';
-            } 
-            if(editButton.innerText === 'Save') {
-                editButton.addEventListener('click', () => {
-                    saveToLocalStorage();
-                    taskEdited.classList.toggle('hidden');
-                })
-            } 
+            }  
         })
         // CLOSE TASK EDITED MESSAGE
         if(!taskEdited.classList.contains('hidden')) {
@@ -117,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('task edited')
             })
         }
-
         // DELETE TASK
         deleteButton.addEventListener('click', () => {
             newTaskRow.remove();
@@ -148,8 +146,18 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             return;
         } 
-
     }
+
+    // SAVE TO LOCALSTORAGE
+    const saveToLocalStorage = () => {
+        const tasks = [];
+        document.querySelectorAll('.task-row').forEach(row => {
+            const taskInput = row.querySelector('.task-input');
+            tasks.push(taskInput.value);
+        });
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+
     // FORM SUBMISSION
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -167,17 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // CREATE A NEW TASK
         createTask(taskValue);
-   
 
-        // SAVE TO LOCALSTORAGE
-        const saveToLocalStorage = () => {
-            const tasks = [];
-            document.querySelectorAll('.task-row').forEach(row => {
-                const taskInput = row.querySelector('.task-input');
-                tasks.push(taskInput.value);
-            });
-            localStorage.setItem('tasks', JSON.stringify(tasks));
-        }
         // SAVE TO LOCAL STORAGE
         saveToLocalStorage();
 
